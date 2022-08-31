@@ -29,6 +29,12 @@ a {
     padding: 10px;
     border-radius: 10px 30px;
 }
+[href^="../ejemplos/"]{
+    background-color: darkorchid;
+    padding: 10px;
+    border-radius: 10px 30px;
+}
+
 .link-ejercicios{
     background-color: teal;
     padding: 10px;
@@ -234,5 +240,10 @@ h6.md-focus:before {
 
 .change-vh-container {
     text-align: right;
+}
+
+.diagram-ascii pre{
+    font-family: "Menlo";
+    text-align: center;
 }
 

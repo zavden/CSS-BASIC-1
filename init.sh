@@ -31,30 +31,50 @@ echo '-
 echo 'extends /modules/pug/blocks/ejercicios
 block pug_javascript
     -
+        nej = NL
         let titulo = "Ejemplo NL",
             formato = ""
         let codepen_list = [
             "vYEPxPX",
             "BaybRKr",
         ]
-        nej = NL // <== EXERCISE NUMBER - REPLACE IT
+        let _ej = "01"
 block pug_styles
     +new_style(`../styles.css`)
 block html_javascript
     +new_script(`../scripts.js`)
 block pug_contenido
-    +code_html("01", "HTML", "CSS", "JS")
-    .tabcontent#HTML-01: :markdown-it(html)
+    +code_html(_ej, "HTML", "CSS", "JS")
+    .tabcontent(id=`HTML-${_ej}`): :markdown-it(html)
             ```html
             <p>Hello world - 3</p>
             ```
-    .tabcontent#CSS-01: :markdown-it(html)
+    .tabcontent(id=`CSS-${_ej}`): :markdown-it(html)
             ```css
             p {
                 color: green;
             }
             ```
-    .tabcontent#JS-01: :markdown-it(html)
+    .tabcontent(id=`JS-${_ej}`): :markdown-it(html)
+            ```javascript
+            const d = p.querySelector("d");
+            d.style.fontSize = "2em";
+            ```
+    hr
+    hr
+    - _ej = "02"
+    +code_html(_ej, "HTML", "CSS", "JS")
+    .tabcontent(id=`HTML-${_ej}`): :markdown-it(html)
+            ```html
+            <p>Hello world - 3</p>
+            ```
+    .tabcontent(id=`CSS-${_ej}`): :markdown-it(html)
+            ```css
+            p {
+                color: green;
+            }
+            ```
+    .tabcontent(id=`JS-${_ej}`): :markdown-it(html)
             ```javascript
             const d = p.querySelector("d");
             d.style.fontSize = "2em";
@@ -86,6 +106,18 @@ block pug_contenido
                 const p = p.querySelector("p");
                 p.style.fontSize = "2em";
                 ```
+    .diagram-ascii: pre.
+                               ┌─────────────┐                    
+                               │  Block - 1  │                    
+                               └──────┳──────┘                    
+                   ┏━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━┓       
+                   ┃                  ┃                   ┃       
+                   ▼                  ▼                   ▼       
+            ┌─TEC-1───────┐    ┌─TEC-2───────┐     ┌─TEC-3───────┐
+            │  Alexander  │    │  Alexander  │     │  Alexander  │
+            │ Vazquez Zal │    │ Vazquez Zal │     │ Vazquez Zal │
+            └─────────────┘    └─────────────┘     └─────────────┘
+
 //-
     p=String.raw`$$ x^5 $$`
     each url in codepen_list
@@ -152,6 +184,12 @@ a {
     padding: 10px;
     border-radius: 10px 30px;
 }
+[href^="../ejemplos/"]{
+    background-color: darkorchid;
+    padding: 10px;
+    border-radius: 10px 30px;
+}
+
 .link-ejercicios{
     background-color: teal;
     padding: 10px;
@@ -358,6 +396,11 @@ h6.md-focus:before {
 .change-vh-container {
     text-align: right;
 }
+
+.diagram-ascii pre{
+    font-family: "Menlo";
+    text-align: center;
+}
 ' > src/styles.scss
 echo 'extends /modules/pug/blocks/index
 block pug_javascript
@@ -561,6 +604,8 @@ mixin menu_nav_index(...arr_ejercicios)
             else
                 a(href=`ejercicios/ejercicios-${ej}.html`)=`${title}`
 mixin html_emb_ej(name,padding="300px")
+    .ejercicio
+        a(href=`../ejemplos/${name}/index.html` target="_blank")=`Link to ${name.toUpperCase()}`
     .embed-container(style=`padding-bottom: ${padding};`).html-resize
         iframe.html-resize(src=`../ejemplos/${name}/` frameborder="0" allowfullscreen)
 mixin html_emb(name,padding="300px")

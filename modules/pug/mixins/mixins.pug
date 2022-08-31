@@ -49,6 +49,8 @@ mixin menu_nav_index(...arr_ejercicios)
             else
                 a(href=`ejercicios/ejercicios-${ej}.html`)=`${title}`
 mixin html_emb_ej(name,padding="300px")
+    .ejercicio
+        a(href=`../ejemplos/${name}/index.html` target="_blank")=`Link to ${name.toUpperCase()}`
     .embed-container(style=`padding-bottom: ${padding};`).html-resize
         iframe.html-resize(src=`../ejemplos/${name}/` frameborder="0" allowfullscreen)
 mixin html_emb(name,padding="300px")
