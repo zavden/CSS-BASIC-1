@@ -1,5 +1,9 @@
+// @ts-nocheck
+
 (function() {
-    const subtitle = document.getElementById("subtitle")
-    subtitle.style.color= "pink"
+    const app = Vue.createApp({
+        template: '<h1>Hola con Vue</h1>'
+    })
+    app.mount("#app")
 })()
 
