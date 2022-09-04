@@ -120,6 +120,14 @@ block pug_contenido
         pre: code.hljs: include:highlight(lang="scss") ../ejemplos/ej-03/styles.scss
     .tabcontent#JS-03
         pre: code.hljs: include:highlight(lang="typescript") ../ejemplos/ej-03/script.ts
+    hr
+    .content-flex-code
+        pre(style="display: block; width:100%"): code.hljs(style="height: 100%"): :highlight(lang="html")
+            <p> ABC </p>
+        pre(style="display: block; width:100%"): code.hljs(style="height: 100%"): :highlight(lang="css")
+            p:target {
+                color: red;
+            }
 
 
 ' > templates/ejercicios.pug
@@ -415,6 +423,13 @@ code.hljs{padding:3px 5px}.hljs{background:#272822;color:#ddd}
     padding-bottom: 50px;
     background-color: #1D1E22;
     color: white;
+}
+
+
+.content-flex-code {
+    display: flex;
+    align-items: stretch;
+    align-content: center;
 }
 ' > src/styles.scss
 echo 'extends /modules/pug/blocks/index

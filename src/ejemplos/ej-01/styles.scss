@@ -1,5 +1,12 @@
-.title {
-    color: red;
-    font-size: 2em;
+a,p {font-size: 2em;}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1em;
 }
 
+div {
+    background-color: yellow;
+    padding: 1em;
+    width: 400px;
+}

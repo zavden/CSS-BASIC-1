@@ -300,4 +300,10 @@ code.hljs {
   color: white;
 }
 
+.content-flex-code {
+  display: flex;
+  align-items: stretch;
+  align-content: center;
+}
+
 /*# sourceMappingURL=styles.css.map */

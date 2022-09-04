@@ -13,83 +13,45 @@ block pug_styles
 block html_javascript
     +new_script(`../scripts.js`)
 block pug_contenido
-    +codepen_flex_all("BaybRKr")
-    +codepen_flex_all("vYEPxPX")
-    hr
-    +code_emb_source_u("ej-01")
-    +code_emb_source_u("ej-02")
-    hr
-    +codepen_flex_all("BaybRKr",1)
-    +codepen_flex_all("vYEPxPX",1)
-    hr
-    hr
-    +code_emb_html("ej-01")
-    +code_emb_css("ej-01")
-    +code_emb_js("ej-01")
-    br
-    +code_html("02", "HTML", "CSS", "JS")
-    .tabcontent#HTML-02
-        +code_emb_html("ej-02")
-    .tabcontent#CSS-02
-        +code_emb_css("ej-02")
-    .tabcontent#JS-02
-        +code_emb_js("ej-02")
-    +img_e("e1-1.png")
-    :markdown-it
-        ![](../static/e1-1.png)
-    //- pre: code.txt-diagram: include ../static/txt-diagrams/diag1.txt
-    +code_html("01", "HTML", "CSS", "JS")
-    .tabcontent#HTML-01: :markdown-it(html)
-            ```html
-            <p>Hello world - 3</p>
-            ```
-    .tabcontent#CSS-01: :markdown-it(html)
-            ```css
-            p {
-                color: green;
+    h2 Pseudoelemento :target
+    h3 Ejemplo 1
+    p Selecciona un elemento que haya sido seleccionado por id.
+    .content-flex-code
+        pre(style="display: block; width:100%"): code.hljs(style="height: 100%"): :highlight(lang="html")
+            <a href="capitulo-5"> Capítulo 5 </a>
+        pre(style="display: block; width:100%"): code.hljs(style="height: 100%"): :highlight(lang="css")
+            p:target {
+                color: red;
             }
-            ```
-    .tabcontent#JS-01: :markdown-it(html)
-            ```javascript
-            const d = p.querySelector("d");
-            d.style.fontSize = "2em";
-            ```
-    hr
-    hr
-    +codepen_flex("BaybRKr",1)
-    +codepen_flex_live("BaybRKr",1)
-    +codepen_flex_all("BaybRKr",1)
-    hr
-    +html_emb_ej("ej-01")
-    .tab-content
-        +tab_info(0, "HTML", "CSS", "JS")
-        .tabcontent#HTML-0
-            :markdown-it(html)
-                ```html
-                <p>Hello world</p>
-                ```
-        .tabcontent#CSS-0
-            :markdown-it(html)
-                ```css
-                p {
-                    color: red;
-                }
-                ```
-        .tabcontent#JS-0
-            :markdown-it(html)
-                ```javascript
-                const p = p.querySelector("p");
-                p.style.fontSize = "2em";
-                ```
-    hr
-    hr
-    +code_html("03", "HTML", "CSS", "JS")
-    .tabcontent#HTML-03: pre: code.hljs: :highlight(lang="html")
-        <p>Hello world - 3</p>
-    .tabcontent#CSS-03
-        pre: code.hljs: include:highlight(lang="scss") ../ejemplos/ej-03/styles.scss
-    .tabcontent#JS-03
-        pre: code.hljs: include:highlight(lang="typescript") ../ejemplos/ej-03/script.ts
+    +codepen_flex_all("QWrwKGe")
+    h3 Ejemplo 2
+    +codepen_flex_all("WNJbGpq","html",300)
+    +codepen_flex_all("vYjEyOM","html",400)
+    h2 Pseudoelemento :not
+    h3 Ejemplo 1
+    +codepen_flex_all("QWrwGNK","html",400)
+    h3 Ejemplo 2: Problema clásico de CSS, doble margin bottom 
+    p Es buena práctica no definir márgenes superiores, solo márgenes inferiores (por colapsado de márgenes).
+    +code_emb_source_u("ej-01", "400px")
+    p: b SOLUCIÓN
+    +codepen_flex_all("vYjEyXw","html",400)
+    h2 Pseudoelemento :empty
+    :markdown-it(html)
+        También existe el Pseudoelemento `empty`, el cual hace referencia a los elementos qu están vacios.
 
-
-
+        Se puede combinar con otros, como por ejemplo: 
+        ```css
+        div:not(:empty){
+            ...
+        }
+        ```
+        El cual afecta a todos los `div`s que no estén vacíos.
+    h2 Pseudoelementos :last-of-type y :first-of-type
+    :markdown-it
+        Estos **solo** funcionan con elementos, es decir, etiquetas html.
+    +codepen_flex_all("zYjxoza","html",400)
+    h2 Pseudoelementos :nth-child, :nth-last-child, :nth-of-type, :nth-last-of-type
+    +codepen_flex_all("oNdgYqR","html",400)
+    h2 Trucos
+    +codepen_flex_all("abGzBaP","html",400)
+    

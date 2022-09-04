@@ -142,7 +142,7 @@ mixin code_html(num, ...blks)
     .tab-content
         +tab_info(num, ...blks)
 
-mixin codepen_flex_all(url,format="html",height_window=450,user=codepen_user)
+mixin codepen_flex_all(url,format="html",height_window=550,user=codepen_user)
     - codepen_count += 1
     .ejercicio
         a(href=`https://codepen.io/${user}/pen/${url}`)=`Ejercicio ${zeroPad(codepen_count,2)}`
@@ -250,7 +250,3 @@ mixin code_emb_source_u(name, padding="300px", padding_code="400px")
                 +code_emb_css(name, padding=padding_code)
             .tabcontent(id=`JS-S-${code_count}`)
                 +code_emb_js(name, padding=padding_code)
-
-
-
-
