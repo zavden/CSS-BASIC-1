@@ -1,74 +1,65 @@
 extends /modules/pug/blocks/ejercicios
 block pug_javascript
     -
-        nej = 1
         let titulo = "Ejemplo 1",
             formato = ""
         let codepen_list = [
             "vYEPxPX",
             "BaybRKr",
         ]
-        let _ej = "01"
+        nej = 1 // <== EXERCISE NUMBER - REPLACE IT
 block pug_styles
     +new_style(`../styles.css`)
 block html_javascript
     +new_script(`../scripts.js`)
 block pug_contenido
-    //- :markdown-it(html) 
-    //-     ![a](../../static/draw1.png)
-    //-     ![b](../../static/draw1.png)
-    :markdown-it(html)
-
-        ![Ejemplo](../static/draw2.png)
-        ![Ejemplo](../static/draw1.svg)
-        ![Ejemplo](../static/draw2.svg)
-        ## Draw3
-        ![Ejemplo](../static/draw3.svg)
-        ![Ejemplo](../static/draw3.png)
-        ![Ejemplo](../static/draw4.png)
-        ![Ejemplo](../static/draw4.svg)
-
-    +code_html(_ej, "HTML", "CSS", "JS")
-    .tabcontent(id=`HTML-${_ej}`): :markdown-it(html)
+    +codepen_flex_all("BaybRKr")
+    +codepen_flex_all("vYEPxPX")
+    hr
+    +code_emb_source_u("ej-01")
+    +code_emb_source_u("ej-02")
+    hr
+    +codepen_flex_all("BaybRKr",1)
+    +codepen_flex_all("vYEPxPX",1)
+    hr
+    hr
+    +code_emb_html("ej-01")
+    +code_emb_css("ej-01")
+    +code_emb_js("ej-01")
+    br
+    +code_html("02", "HTML", "CSS", "JS")
+    .tabcontent#HTML-02
+        +code_emb_html("ej-02")
+    .tabcontent#CSS-02
+        +code_emb_css("ej-02")
+    .tabcontent#JS-02
+        +code_emb_js("ej-02")
+    +img_e("e1-1.png")
+    :markdown-it
+        ![](../static/e1-1.png)
+    //- pre: code.txt-diagram: include ../static/txt-diagrams/diag1.txt
+    +code_html("01", "HTML", "CSS", "JS")
+    .tabcontent#HTML-01: :markdown-it(html)
             ```html
             <p>Hello world - 3</p>
             ```
-    .tabcontent(id=`CSS-${_ej}`): :markdown-it(html)
+    .tabcontent#CSS-01: :markdown-it(html)
             ```css
             p {
                 color: green;
             }
             ```
-    .tabcontent(id=`JS-${_ej}`): :markdown-it(html)
+    .tabcontent#JS-01: :markdown-it(html)
             ```javascript
             const d = p.querySelector("d");
             d.style.fontSize = "2em";
             ```
     hr
     hr
-    - _ej = "02"
-    +code_html(_ej, "HTML", "CSS", "JS")
-    .tabcontent(id=`HTML-${_ej}`): :markdown-it(html)
-            ```html
-            <p>Hello world - 3</p>
-            ```
-    .tabcontent(id=`CSS-${_ej}`): :markdown-it(html)
-            ```css
-            p {
-                color: green;
-            }
-            ```
-    .tabcontent(id=`JS-${_ej}`): :markdown-it(html)
-            ```javascript
-            const d = p.querySelector("d");
-            d.style.fontSize = "2em";
-            ```
+    +codepen_flex("BaybRKr",1)
+    +codepen_flex_live("BaybRKr",1)
+    +codepen_flex_all("BaybRKr",1)
     hr
-    hr
-    +codepen(1)
-    +codepen_url("jONXGLy",2,height_window=600)
-    +codepen_flex("jONXGLy",2,height_window=600)
-    +codepen_flex_live("BaybRKr",2,height_window=600)
     +html_emb_ej("ej-01")
     .tab-content
         +tab_info(0, "HTML", "CSS", "JS")
@@ -90,24 +81,15 @@ block pug_contenido
                 const p = p.querySelector("p");
                 p.style.fontSize = "2em";
                 ```
-    .diagram-ascii: pre.
-                           ┌─────────────┐                    
-                           │ Block - >2  │                    
-                           └──────┳──────┘                    
-                                  ┃                           
-                                  ┃                           
-               ┏━━━━━━━━━━━━━━━━━━╋━━━━━Label━━━━━━━━━┓       
-               ┃                  ┃                   ┃       
-               ┃                  ┃                   ┃       
-               ┃                  ┃                   ┃       
-               ▼                  ▼                   ▼       
-        ┌─TEC-1───────┐    ┌─TEC-2───────┐     ┌─TEC-3───────┐
-        │  Alexander  │    │  Alexander  │     │  Alexander  │
-        │ Vazquez Zal │    │ Vazquez Zal │     │ Vazquez Zal │
-        └─────────────┘    └─────────────┘     └─────────────┘
+    hr
+    hr
+    +code_html("03", "HTML", "CSS", "JS")
+    .tabcontent#HTML-03: pre: code.hljs: :highlight(lang="html")
+        <p>Hello world - 3</p>
+    .tabcontent#CSS-03
+        pre: code.hljs: include:highlight(lang="scss") ../ejemplos/ej-03/styles.scss
+    .tabcontent#JS-03
+        pre: code.hljs: include:highlight(lang="typescript") ../ejemplos/ej-03/script.ts
 
-//-
-    p=String.raw`$$ x^5 $$`
-    each url in codepen_list
-        +codepen_url(url,`${codepen_list.indexOf(url)+1}`,height_window=600)
+
 

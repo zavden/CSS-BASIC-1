@@ -16,7 +16,7 @@ body{
 .contenido{
     background-color: white;
     min-height: calc( 100vh - 20px );
-    max-width: 1200px;
+    max-width: 1262px;
     margin: 0 auto;
     padding: 20px 30px 0 30px;
 }
@@ -29,12 +29,6 @@ a {
     padding: 10px;
     border-radius: 10px 30px;
 }
-[href^="../ejemplos/"]{
-    background-color: darkorchid;
-    padding: 10px;
-    border-radius: 10px 30px;
-}
-
 .link-ejercicios{
     background-color: teal;
     padding: 10px;
@@ -176,6 +170,16 @@ h6.md-focus:before {
     line-height: inherit;
 }
 // -----------------
+// -----------------
+pre code.hljs{display:block;overflow-x:auto;padding:1em}
+code.hljs{padding:3px 5px}.hljs{background:#272822;color:#ddd}
+.hljs-keyword,.hljs-literal,.hljs-name,.hljs-selector-tag,.hljs-strong,.hljs-tag{color:#f92672}
+.hljs-code{color:#66d9ef}.hljs-attribute,.hljs-link,.hljs-regexp,.hljs-symbol{color:#bf79db}
+.hljs-addition,.hljs-built_in,.hljs-bullet,.hljs-emphasis,.hljs-section,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-string,.hljs-subst,.hljs-template-tag,.hljs-template-variable,.hljs-title,.hljs-type,.hljs-variable{color:#a6e22e}
+.hljs-class .hljs-title,.hljs-title.class_{color:#fff}
+.hljs-comment,.hljs-deletion,.hljs-meta,.hljs-quote{color:#75715e}
+.hljs-doctag,.hljs-keyword,.hljs-literal,.hljs-section,.hljs-selector-id,.hljs-selector-tag,.hljs-title,.hljs-type{font-weight:700}
+// -----------------
 .embed-container {
     position: relative;
      /* set the aspect ratio here as (height / width) * 100% */
@@ -242,8 +246,15 @@ h6.md-focus:before {
     text-align: right;
 }
 
-.diagram-ascii pre{
-    font-family: "Fira Code";
-    text-align: center;
+.ejercicio-html{
+    background-color: purple;
+    padding: 10px;
+    border-radius: 10px 30px;
+}
+
+.super-embed-container .change-vh-container{
+    padding-bottom: 50px;
+    background-color: #1D1E22;
+    color: white;
 }
 

@@ -7,8 +7,8 @@ p=c$(ej)/main.go
 
 N_NEXT=1
 EXERCISES_LS=$(shell ls -1 src/ejercicios | wc -l)
-NEXT_EXERCISE=$(shell echo $$(( $(EXERCISES_LS)  + $(N_NEXT)   )))
-NEXT_EXERCISE_FORMAT=$(shell printf "%02.f" $$(($(NEXT_EXERCISE))))
+NEXT_EXERCISE=$$(( $(EXERCISES_LS)  + $(N_NEXT)   ))
+NEXT_EXERCISE_FORMAT=$(shell echo $$(($(NEXT_EXERCISE))))
 
 EXAMPLES_LS=$(shell ls -1 src/ejemplos | wc -l)
 NEXT_EXAMPLE=$$(( $(EXAMPLES_LS)  + $(N_NEXT)   ))
@@ -24,18 +24,14 @@ init:
 	npx tsc -w &
 	npx live-server docs/
 
+static: copy-static init
+
 clean:
 	rm -rf docs/
 	git clone https://github.com/zavden/docs-static.git docs
 	rm -rf docs/.git
 	mkdir -p docs/ejercicios/ docs/markdown/
 	if [ -z `ls -A src/markdown/*.html` ]; then echo "Markdown empty so NO copy"; else cp src/markdown/*.html docs/markdown; fi
-
-restart: clean-all
-	git clone https://github.com/zavden/docs-static.git docs
-	mkdir -p docs/ejercicios/ docs/markdown/
-	if [ -z `ls -A src/markdown/*.html` ]; then echo "Markdown empty so NO copy"; else cp src/markdown/*.html docs/markdown; fi
-	npm install --save-dev jstransformer-markdown-it pug-cli typescript live-server sass
 
 build: clean copy-static init
 
@@ -73,8 +69,8 @@ del:
 
 next-e:
 	@echo $(NEXT_EXERCISE_FORMAT)
-	sed 's/NL/$(NEXT_EXERCISE)/g' templates/ejercicios.pug > src/ejercicios/ejercicios-$(NEXT_EXERCISE_FORMAT).pug
-	sed 's/NE/$(NEXT_EXERCISE)/' templates/functions.pug > modules/pug/functions/functions.pug
+	sed 's/NL/$(NEXT_EXERCISE_FORMAT)/g' templates/ejercicios.pug > src/ejercicios/ejercicios-0$(NEXT_EXERCISE_FORMAT).pug
+	sed 's/NE/$(NEXT_EXERCISE_FORMAT)/' templates/functions.pug > modules/pug/functions/functions.pug
 
 next-h:
 	@echo $(NEXT_EXAMPLE_FORMAT)
