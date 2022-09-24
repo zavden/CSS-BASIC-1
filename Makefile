@@ -26,6 +26,11 @@ init:
 
 static: copy-static init
 
+docs-static:
+	git clone https://github.com/zavden/docs-static.git
+	rm -rf docs-static/.git
+	mv docs-static modules
+
 clean:
 	rm -rf docs/
 	cp -r ./modules/docs-static ./docs
