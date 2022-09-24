@@ -28,8 +28,7 @@ static: copy-static init
 
 clean:
 	rm -rf docs/
-	git clone https://github.com/zavden/docs-static.git docs
-	rm -rf docs/.git
+	cp -r ./modules/docs-static ./docs
 	mkdir -p docs/ejercicios/ docs/markdown/
 	if [ -z `ls -A src/markdown/*.html` ]; then echo "Markdown empty so NO copy"; else cp src/markdown/*.html docs/markdown; fi
 
@@ -39,7 +38,7 @@ clean-all:
 	rm -rf node_modules modules package* tsconfig.json docs templates
 
 copy-static:
-	cp -r src/static docs/
+	watchexec -w src/static 'cp -r src/static docs/' &
 
 copy-md:
 	cp src/markdown/*.html docs/markdown

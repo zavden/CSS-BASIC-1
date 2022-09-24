@@ -1,8 +1,11 @@
 git clone https://github.com/zavden/docs-static.git docs
+git clone https://github.com/zavden/docs-static.git
 rm -rf docs/.git
+rm -rf docs-static/.git
 mkdir -p src/ejercicios/ docs/ejercicios/ templates/ejemplo src/markdown/
 mkdir -p templates/markdown docs/markdown/ src/static
 mkdir -p modules/pug/blocks modules/pug/functions modules/pug/mixins modules/pug/static
+mv docs-static modules
 npm install --save-dev jstransformer-markdown-it pug-cli typescript live-server sass jstransformer-highlight
 echo 'node_modules/' > .gitignore
 # Templates
